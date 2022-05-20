@@ -15,6 +15,10 @@ To see how to make this your own, look here:
 - API version: 1.0
 - Build date: 2022-05-21T02:31:45.940923+10:00[Australia/Sydney]
 
+```
+export GO_POST_PROCESS_FILE="/usr/local/bin/gofmt -w"
+openapi-generator generate -i openapi3.yaml -g go-server
+```
 
 ### Running the server
 To run the server, follow these simple steps:
