@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  description: A hello world service.
+  title: Hello Service
+  version: "1.0"
+servers:
+- url: http://localhost:8000
+tags:
+- description: The hello service says hello.
+  name: hello
+paths:
+  /hello/{name}:
+    get:
+      operationId: hello#hello
+      parameters:
+      - description: name
+        example: Et ab soluta in.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          description: name
+          example: Ullam sequi quidem qui in et excepturi.
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example: Aut officiis.
+              schema:
+                example: Iste ratione voluptatum.
+                type: string
+          description: OK response.
+      summary: hello hello
+      tags:
+      - hello
+  /openapi.json:
+    get:
+      operationId: hello#/openapi.json
+      responses:
+        "200":
+          description: File downloaded
+      summary: Download ./gen/http/openapi.json
+      tags:
+      - hello
+components:
+  schemas: {}
