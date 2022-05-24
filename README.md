@@ -34,5 +34,5 @@ docker build --network=host -t openapi .
 
 Once image is built use
 ```
-docker run --rm -it openapi
+docker run --rm -p 8080:8080 -it openapi
 ```
