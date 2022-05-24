@@ -11,8 +11,8 @@ package openapi
 
 import (
 	"context"
+	"io/ioutil"
 	"net/http"
-	"errors"
 )
 
 // HelloApiService is a service that implements the logic for the HelloApiServicer
@@ -28,22 +28,14 @@ func NewHelloApiService() HelloApiServicer {
 
 // HelloHello - hello hello
 func (s *HelloApiService) HelloHello(ctx context.Context, name string) (ImplResponse, error) {
-	// TODO - update HelloHello with the required logic for this service method.
-	// Add api_hello_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	//TODO: Uncomment the next line to return response Response(200, string{}) or use other options such as http.Ok ...
-	//return Response(200, string{}), nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("HelloHello method not implemented")
+	return Response(http.StatusOK, "Hello, "+name+"."), nil
 }
 
 // HelloOpenapiJson - Download ./gen/http/openapi.json
 func (s *HelloApiService) HelloOpenapiJson(ctx context.Context) (ImplResponse, error) {
-	// TODO - update HelloOpenapiJson with the required logic for this service method.
-	// Add api_hello_service.go to the .openapi-generator-ignore to avoid overwriting this service implementation when updating open api generation.
-
-	//TODO: Uncomment the next line to return response Response(200, {}) or use other options such as http.Ok ...
-	//return Response(200, nil),nil
-
-	return Response(http.StatusNotImplemented, nil), errors.New("HelloOpenapiJson method not implemented")
+	b, err := ioutil.ReadFile("openapi3.json")
+	if err != nil {
+		return Response(http.StatusInternalServerError, err), err
+	}
+	return Response(http.StatusOK, string(b)), nil
 }

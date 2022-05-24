@@ -10,7 +10,6 @@
 package openapi
 
 import (
-	"encoding/json"
 	"net/http"
 	"strings"
 
@@ -19,7 +18,7 @@ import (
 
 // HelloApiController binds http requests to an api service and writes the service results to the http response
 type HelloApiController struct {
-	service HelloApiServicer
+	service      HelloApiServicer
 	errorHandler ErrorHandler
 }
 
@@ -49,7 +48,7 @@ func NewHelloApiController(s HelloApiServicer, opts ...HelloApiOption) Router {
 
 // Routes returns all of the api route for the HelloApiController
 func (c *HelloApiController) Routes() Routes {
-	return Routes{ 
+	return Routes{
 		{
 			"HelloHello",
 			strings.ToUpper("Get"),
@@ -69,7 +68,7 @@ func (c *HelloApiController) Routes() Routes {
 func (c *HelloApiController) HelloHello(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	nameParam := params["name"]
-	
+
 	result, err := c.service.HelloHello(r.Context(), nameParam)
 	// If an error occurred, encode the error with the status code
 	if err != nil {

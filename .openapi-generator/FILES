@@ -1,10 +1,8 @@
 Dockerfile
-README.md
 api/openapi.yaml
 go.mod
 go/api.go
 go/api_hello.go
-go/api_hello_service.go
 go/error.go
 go/helpers.go
 go/impl.go
