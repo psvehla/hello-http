@@ -1,5 +1,5 @@
-module github.com/GIT_USER_ID/GIT_REPO_ID
+module github.com/psvehla/hello-http
 
-go 1.13
+go 1.18
 
 require github.com/gorilla/mux v1.7.3
