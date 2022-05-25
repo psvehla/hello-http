@@ -1,10 +1,9 @@
-FROM golang:1.10 AS build
+FROM golang:1.18 AS build
 WORKDIR /go/src
-COPY go ./go
-COPY main.go .
+COPY . .
 
 ENV CGO_ENABLED=0
-RUN go get -d -v ./...
+RUN go mod tidy
 
 RUN go build -a -installsuffix cgo -o openapi .
 
